@@ -1,0 +1,14 @@
+{
+  "name": "boilerboy",
+  "description": "",
+  "main": "Gruntfile.js",
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "dependencies": {
+    "ammo.js": "kripken/ammo.js#~0.0.3",
+    "three.js": "~0.73.0",
+    "bootstrap": "~3.3.6",
+    "react": "~0.14.3"
+  }
+}

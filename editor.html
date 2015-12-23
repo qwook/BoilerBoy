@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BoilerBoy</title>
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+	<style type="text/css">
+		/* Template-specific stuff
+		 *
+		 * Customizations just for the template; these are not necessary for anything
+		 * with disabling the responsiveness.
+		 */
+
+		/* Account for fixed navbar */
+		body {
+		  padding-top: 70px;
+		  padding-bottom: 30px;
+		  overflow: hidden;
+		}
+
+		body,
+		.navbar-fixed-top,
+		.navbar-fixed-bottom {
+		}
+
+		/* Don't let the lead text change font-size. */
+		.lead {
+		  font-size: 16px;
+		}
+
+		/* Finesse the page header spacing */
+		.page-header {
+		  margin-bottom: 30px;
+		}
+		.page-header .lead {
+		  margin-bottom: 10px;
+		}
+
+
+		/* Non-responsive overrides
+		 *
+		 * Utilize the following CSS to disable the responsive-ness of the container,
+		 * grid system, and navbar.
+		 */
+
+		/* Reset the container */
+		.container {
+		  width: 970px;
+		  max-width: none !important;
+		}
+
+		/* Demonstrate the grids */
+		.col-xs-4 {
+		  padding-top: 15px;
+		  padding-bottom: 15px;
+		  background-color: #eee;
+		  background-color: rgba(86,61,124,.15);
+		  border: 1px solid #ddd;
+		  border: 1px solid rgba(86,61,124,.2);
+		}
+
+		.container .navbar-header,
+		.container .navbar-collapse {
+		  margin-right: 0;
+		  margin-left: 0;
+		}
+
+		/* Always float the navbar header */
+		.navbar-header {
+		  float: left;
+		}
+
+		/* Undo the collapsing navbar */
+		.navbar-collapse {
+		  display: block !important;
+		  height: auto !important;
+		  padding-bottom: 0;
+		  overflow: visible !important;
+		  visibility: visible !important;
+		}
+
+		.navbar-toggle {
+		  display: none;
+		}
+		.navbar-collapse {
+		  border-top: 0;
+		}
+
+		.navbar-brand {
+		  margin-left: -15px;
+		}
+
+		/* Always apply the floated nav */
+		.navbar-nav {
+		  float: left;
+		  margin: 0;
+		}
+		.navbar-nav > li {
+		  float: left;
+		}
+		.navbar-nav > li > a {
+		  padding: 5px 10px;
+		}
+
+		/* Redeclare since we override the float above */
+		.navbar-nav.navbar-right {
+		  float: right;
+		}
+
+		/* Undo custom dropdowns */
+		.navbar .navbar-nav .open .dropdown-menu {
+		  position: absolute;
+		  float: left;
+		  background-color: #fff;
+		  border: 1px solid #ccc;
+		  border: 1px solid rgba(0, 0, 0, .15);
+		  border-width: 0 1px 1px;
+		  border-radius: 0 0 4px 4px;
+		  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+		          box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+		}
+		.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+		  /*color: #333;*/
+		}
+		.navbar .navbar-nav .open .dropdown-menu > li > a:hover,
+		.navbar .navbar-nav .open .dropdown-menu > li > a:focus,
+		.navbar .navbar-nav .open .dropdown-menu > .active > a,
+		.navbar .navbar-nav .open .dropdown-menu > .active > a:hover,
+		.navbar .navbar-nav .open .dropdown-menu > .active > a:focus {
+		  /*color: #fff !important;*/
+		  /*background-color: #428bca !important;*/
+		}
+		.navbar .navbar-nav .open .dropdown-menu > .disabled > a,
+		.navbar .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+		.navbar .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+		  /*color: #999 !important;*/
+		  /*background-color: transparent !important;*/
+		}
+
+		/* Undo form expansion */
+		.navbar-form {
+		  float: left;
+		  width: auto;
+		  padding-top: 0;
+		  padding-bottom: 0;
+		  margin-right: 0;
+		  margin-left: 0;
+		  border: 0;
+		  -webkit-box-shadow: none;
+		          box-shadow: none;
+		}
+
+		/* Copy-pasted from forms.less since we mixin the .form-inline styles. */
+		.navbar-form .form-group {
+		  display: inline-block;
+		  margin-bottom: 0;
+		  vertical-align: middle;
+		}
+
+		.navbar-form .form-control {
+		  display: inline-block;
+		  width: auto;
+		  vertical-align: middle;
+		}
+
+		.navbar-form .form-control-static {
+		  display: inline-block;
+		}
+
+		.navbar-form .input-group {
+		  display: inline-table;
+		  vertical-align: middle;
+		}
+
+		.navbar-form .input-group .input-group-addon,
+		.navbar-form .input-group .input-group-btn,
+		.navbar-form .input-group .form-control {
+		  width: auto;
+		}
+
+		.navbar-form .input-group > .form-control {
+		  width: 100%;
+		}
+
+		.navbar-form .control-label {
+		  margin-bottom: 0;
+		  vertical-align: middle;
+		}
+
+		.navbar-form .radio,
+		.navbar-form .checkbox {
+		  display: inline-block;
+		  margin-top: 0;
+		  margin-bottom: 0;
+		  vertical-align: middle;
+		}
+
+		.navbar-form .radio label,
+		.navbar-form .checkbox label {
+		  padding-left: 0;
+		}
+
+		.navbar-form .radio input[type="radio"],
+		.navbar-form .checkbox input[type="checkbox"] {
+		  position: relative;
+		  margin-left: 0;
+		}
+
+		.navbar-form .has-feedback .form-control-feedback {
+		  top: 0;
+		}
+
+		/* Undo inline form compaction on small screens */
+		.form-inline .form-group {
+		  display: inline-block;
+		  margin-bottom: 0;
+		  vertical-align: middle;
+		}
+
+		.form-inline .form-control {
+		  display: inline-block;
+		  width: auto;
+		  vertical-align: middle;
+		}
+
+		.form-inline .form-control-static {
+		  display: inline-block;
+		}
+
+		.form-inline .input-group {
+		  display: inline-table;
+		  vertical-align: middle;
+		}
+		.form-inline .input-group .input-group-addon,
+		.form-inline .input-group .input-group-btn,
+		.form-inline .input-group .form-control {
+		  width: auto;
+		}
+
+		.form-inline .input-group > .form-control {
+		  width: 100%;
+		}
+
+		.form-inline .control-label {
+		  margin-bottom: 0;
+		  vertical-align: middle;
+		}
+
+		.form-inline .radio,
+		.form-inline .checkbox {
+		  display: inline-block;
+		  margin-top: 0;
+		  margin-bottom: 0;
+		  vertical-align: middle;
+		}
+		.form-inline .radio label,
+		.form-inline .checkbox label {
+		  padding-left: 0;
+		}
+
+		.form-inline .radio input[type="radio"],
+		.form-inline .checkbox input[type="checkbox"] {
+		  position: relative;
+		  margin-left: 0;
+		}
+
+		.form-inline .has-feedback .form-control-feedback {
+		  top: 0;
+		}
+
+		.navbar {
+			min-height: 0;
+		}
+
+		.toolbar {
+			position: absolute;
+			top: 31px;
+			left: 70%;
+			width: 30%;
+		}
+
+		/* */
+
+		/**
+		 * Nestable
+		 */
+		.dd { position: relative; display: block; margin: 0; padding: 0; max-width: 600px; list-style: none; font-size: 13px; line-height: 20px; }
+		.dd-list { display: block; position: relative; margin: 0; padding: 0; list-style: none; }
+		.dd-list .dd-list { padding-left: 30px; }
+		.dd-collapsed .dd-list { display: none; }
+		.dd-item,
+		.dd-empty,
+		.dd-placeholder { display: block; position: relative; margin: 0; padding: 0; min-height: 20px; font-size: 13px; line-height: 20px; }
+		.dd-handle { display: block; height: 30px; margin: 5px 0; padding: 5px 10px; color: #333; text-decoration: none; font-weight: bold; border: 1px solid #ccc;
+			background: #fafafa;
+			background: -webkit-linear-gradient(top, #fafafa 0%, #eee 100%);
+			background:    -moz-linear-gradient(top, #fafafa 0%, #eee 100%);
+			background:         linear-gradient(top, #fafafa 0%, #eee 100%);
+			-webkit-border-radius: 3px;
+			border-radius: 3px;
+			box-sizing: border-box; -moz-box-sizing: border-box;
+		}
+		.dd-handle:hover { color: #2ea8e5; background: #fff; }
+		.dd-item > button { display: block; position: relative; cursor: pointer; float: left; width: 25px; height: 20px; margin: 5px 0; padding: 0; text-indent: 100%; white-space: nowrap; overflow: hidden; border: 0; background: transparent; font-size: 12px; line-height: 1; text-align: center; font-weight: bold; }
+		.dd-item > button:before { content: '+'; display: block; position: absolute; width: 100%; text-align: center; text-indent: 0; }
+		.dd-item > button[data-action="collapse"]:before { content: '-'; }
+		.dd-placeholder,
+		.dd-empty { margin: 5px 0; padding: 0; min-height: 30px; background: #f2fbff; border: 1px dashed #b6bcbf; box-sizing: border-box; -moz-box-sizing: border-box; }
+		.dd-empty { border: 1px dashed #bbb; min-height: 100px; background-color: #e5e5e5;
+			background-image: -webkit-linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff),
+			-webkit-linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);
+			background-image:    -moz-linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff),
+			-moz-linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);
+			background-image:         linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff),
+			linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);
+			background-size: 60px 60px;
+			background-position: 0 0, 30px 30px;
+		}
+		.dd-dragel { position: absolute; pointer-events: none; z-index: 9999; }
+		.dd-dragel > .dd-item .dd-handle { margin-top: 0; }
+		.dd-dragel .dd-handle {
+			-webkit-box-shadow: 2px 4px 6px 0 rgba(0,0,0,.1);
+			box-shadow: 2px 4px 6px 0 rgba(0,0,0,.1);
+		}
+
+		::-webkit-scrollbar {
+			-webkit-appearance: none;
+			width: 7px;
+		}
+
+		::-webkit-scrollbar-thumb {
+			border-radius: 4px;
+			background-color: rgba(0,0,0,.5);
+			-webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+		}
+	</style>
+</head>
+<body>
+	<div id="editor"></div>
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src="jquery.nestable.custom.js"></script>
+	<script type="text/javascript" src="bower_components/react/react.js"></script>
+	<script type="text/javascript" src="bower_components/react/react-dom.js"></script>
+	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<script type="text/javascript" src="bower_components/ammo.js/builds/ammo.js"></script>
+	<script type="text/javascript" src="bower_components/three.js/three.js"></script>
+	<script type="text/javascript" src="editor/EditorControls.js"></script>
+	<script type="text/javascript" src="http://localhost:8080/build/bundle.js"></script>
+	<script type="text/javascript">
+		require('nw.gui');
+	</script>
+</body>
+</html>
